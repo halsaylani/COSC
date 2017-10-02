@@ -10,7 +10,7 @@
      $_SESSION['uname'] = $uname;
      //session_start();	
      echo "welcome " . $_SESSION['uname'];
-     echo " password is: " . $pass;
+     echo " password is: " . $_SESSION['pass'];
      echo " Today is " . date("Y/m/d") . "<br>";
      echo "<p><a href= ‘logout.php'> Press here to logout</a>";
      
