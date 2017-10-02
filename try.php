@@ -1,14 +1,18 @@
      <?php
-  $uname=$_POST['uname'];
+     $uname=$_POST['uname'];
      $pass=$_POST['pass'];
      //
      if(isset($_POST['submit'])){
      if($uname == "hussan"){
      if($pass == "123321"){
-    
-   
-     echo "welcome " . $POST[‘uname'];
-  
+     
+     session_start();
+     $_SESSION['uname'] = $uname;
+     //session_start();	
+     echo "welcome " . $_SESSION['uname'];
+     echo " password is: " . $pass;
+     echo " Today is " . date("Y/m/d") . "<br>";
+     echo "<p><a href= 'welcome.php'> Press here to logout</a>";
      
      }
      
@@ -24,4 +28,4 @@
      }
      }
      
-?>
+     ?>
