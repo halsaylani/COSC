@@ -6,6 +6,7 @@
   <input type="username"  name="username"><br>
   Password <input type="text" name="password"><br>
   <button type = "submit">Login</button>
+<input type = "submit" name = "attempts" value = "attempts">
 </form>
 </html>
 
