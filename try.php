@@ -12,7 +12,7 @@
      echo "welcome " . $_SESSION['uname'];
      echo " password is: " . $pass;
      echo " Today is " . date("Y/m/d") . "<br>";
-     echo "<p><a href= 'welcome.php'> Press here to logout</a>";
+     echo "<p><a href= ‘logout.php'> Press here to logout</a>";
      
      }
      
