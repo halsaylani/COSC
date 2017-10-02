@@ -1,16 +1,27 @@
      <?php
+  $uname=$_POST['uname'];
+     $pass=$_POST['pass'];
+     //
+     if(isset($_POST['submit'])){
+     if($uname == "hussan"){
+     if($pass == "123321"){
+    
+   
+     echo "welcome " . $POST[‘uname'];
+  
      
-     $myarray = array("hussan","ali"); 
-     $i=0;
-     while($i<$myarray){
-     if($_POST["username"] ==$myarray[$i]){
-echo "welcome";
-break;
-}else{
-echo "try again";
-break;
-
-}
-
-}
+     }
+     
+     else{
+      echo "Invalid Password";
+     
+     }
+     
+     }
+     else{
+     echo "Invalid Username";
+    
+     }
+     }
+     
 ?>
