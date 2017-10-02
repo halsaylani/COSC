@@ -18,12 +18,14 @@
      
      else{
       echo "Invalid Password";
+	echo "<p><a href= 'index.php'> try again</a>";
      
      }
      
      }
      else{
      echo "Invalid Username";
+	echo "<p><a href= 'index.php'> try again</a>";
     
      }
      }
