@@ -1,13 +1,17 @@
 
 <h1/> welcome to the website<h1 /h1>
 <html>
-<form method="POST" action="try.php">
+<body>
+<form method="post" action="try.php">
   <label for="username">Username</label>
-  <input type="username"  name="username"><br>
-  Password <input type="text" name="password"><br>
-  <button type = "submit">Login</button>
-<input type = "submit" name = "attempts" value = "attempts">
+  <input type="username"  name="uname"><br>
+  Password <input type="text" name="pass"><br/>
+  <input type = "submit" name = "submit" value="login!">
+  <input type = "submit" name = "attempts" value = "attempts">
+  
 </form>
+</body>
 </html>
+
 
 
