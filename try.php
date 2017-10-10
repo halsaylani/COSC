@@ -11,7 +11,7 @@
      }
     
      if(isset($_POST['submit'])){
-     if(($uname == $arrayuname) || ($pass == $arraypass)){
+     if(($uname == $arrayuname) && ($pass == $arraypass)){
    
 
      $_SESSION['uname'] = $uname;
