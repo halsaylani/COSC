@@ -5,10 +5,13 @@
      $pass=$_POST['pass'];
      $arrayuname=("hussan");
      $arraypass=("123321");
+     
+     if(!isset($_SESSION['attempts'])){
+     $_SESSION['attempts']=0;
+     }
     
      if(isset($_POST['submit'])){
-     if($uname == $arrayuname){
-     if($pass == $arraypass){
+     if(($uname == $arrayuname) || ($pass == $arraypass)){
    
 
      $_SESSION['uname'] = $uname;
@@ -20,7 +23,7 @@
      }
      
      else{ 
-      echo "Invalid Password";
+      echo "Invalid Username/Password";
        $_SESSION['attempts'] = $_SESSION['attempts'] +1;
      echo "<br>"."attempts are ".$_SESSION['attempts'];
       echo "<p><a href= 'index.php'> try again</a>";
@@ -28,6 +31,7 @@
      }
      
      }
+     /*
      else{
      echo  "Invalid Username";
       $_SESSION['attempts'] = $_SESSION['attempts'] +1;
@@ -35,12 +39,10 @@
      echo "<p><a href= 'index.php'> try again</a>";
     
      }
-     
-     }
+     */
 
 // session_start();
 if(isset( $_POST['attempts'])){
-     $_SESSION['attempts'] = $_SESSION['attempts'];
      echo "attempts are ".$_SESSION['attempts']; 
 }
      
