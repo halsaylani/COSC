@@ -12,6 +12,11 @@
 </form>
 </body>
 </html>
+<?php
+if(isset($_SESSION['is authenticated'])){
+header("Location:welcome.php");
+}
+?>
 
 
 
