@@ -13,18 +13,14 @@
 
      $_SESSION['uname'] = $uname;
      $_SESSION['pass'] = $pass;
-    
+     
  	$_SESSION['is authenticated']= true;
-     echo "welcome " . $_SESSION['uname']."<br>";
-     echo " password is: " . $_SESSION['pass']."<br>";
-     echo " Today is " . date("Y/m/d") . "<br>";
-     echo "<p><a href= 'logout.php'> logout</a>";
+     header("Location:welcome.php");
      
      }
      
      else{ 
       echo "Invalid Password";
-      $_SESSION['is authenticated']= false;
        $_SESSION['attempts'] = $_SESSION['attempts'] +1;
      echo "<br>"."attempts are ".$_SESSION['attempts'];
       echo "<p><a href= 'index.php'> try again</a>";
@@ -34,7 +30,6 @@
      }
      else{
      echo  "Invalid Username";
-     $_SESSION['is authenticated']= false;
       $_SESSION['attempts'] = $_SESSION['attempts'] +1;
      echo "<br>"."attempts are ".$_SESSION['attempts'];
      echo "<p><a href= 'index.php'> try again</a>";
