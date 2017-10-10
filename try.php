@@ -24,7 +24,7 @@
      
      else{ 
       echo "Invalid Username/Password";
-       $_SESSION['attempts'] = $_SESSION['attempts'] +1;
+       $_SESSION['attempts']++;
      echo "<br>"."attempts are ".$_SESSION['attempts'];
       echo "<p><a href= 'index.php'> try again</a>";
      
