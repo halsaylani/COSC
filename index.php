@@ -8,6 +8,7 @@
   Password <input type="text" name="pass"><br/>
   <input type = "submit" name = "submit" value="login!">
   <input type = "submit" name = "attempts" value = "attempts">
+   <?php echo "<p><a href= 'rig.php'> Create an acount</a>";?>
   
 </form>
 </body>
