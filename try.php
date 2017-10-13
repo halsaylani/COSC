@@ -1,52 +1,40 @@
-     <?php
-     session_start();
-     //global $count=0;
-     $uname=$_POST['uname'];
-     $pass=$_POST['pass'];
-     $arrayuname=("hussan");
-     $arraypass=("123321");
-     
-     if(!isset($_SESSION['attempts'])){
-     $_SESSION['attempts']=0;
-     }
+ 
+
+<?php
+session_start();
+try {
+    $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if(isset($_POST['submit'])){
+      $name=$_POST['name'];
+      $pass=$_POST['pass'];
+    if(empty($name) || empty($pass)){
+        echo '<label>All fields are required</label>';
+    }else{
+        $query="SELECT * FROM users WHERE username=:name AND password=:pass";
+        $statement=$db->prepare($query);
+        $statement->execute(array(
+            'name' => $_POST['name'],
+            'pass' => $_POST['pass']
+        ));
+        $count=$statement->rowCount();
+        if($count>0){
+            $_SESSION['name']=$_POST['name'];
+            header("location:welcome.php");
+        }
+        else{
+            echo'<label>Wrong data</label>';
+            echo "<p><a href= 'index.php'> home page</a>";
+        }
+    }
     
-     if(isset($_POST['submit'])){
-     if(($uname == $arrayuname) && ($pass == $arraypass)){
-   
-
-     $_SESSION['uname'] = $uname;
-     $_SESSION['pass'] = $pass;
-     
- 	$_SESSION['is authenticated']= true;
-     header("Location:welcome.php");
-     
-     }
-     
-     else{ 
-      echo "Invalid Username/Password";
-       $_SESSION['attempts']++;
-     echo "<br>"."attempts are ".$_SESSION['attempts'];
-      echo "<p><a href= 'index.php'> try again</a>";
-     
-     }
-     
-     }
-     /*
-     else{
-     echo  "Invalid Username";
-      $_SESSION['attempts'] = $_SESSION['attempts'] +1;
-     echo "<br>"."attempts are ".$_SESSION['attempts'];
-     echo "<p><a href= 'index.php'> try again</a>";
+    }
     
-     }
-     */
-
-// session_start();
-if(isset( $_POST['attempts'])){
-     echo "attempts are ".$_SESSION['attempts']; 
-}
-     
-     ?>
-
-	
-
+    }
+catch(PDOException $e)
+    {
+    $message = $e->getMessage();
+    }
+    //$db = null;
+?> 
