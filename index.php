@@ -4,7 +4,7 @@
 <body>
 <form method="post" action="try.php">
   <label for="username">Username</label>
-  <input type="username"  name="uname"><br>
+  <input type="username"  name="name"><br>
   Password <input type="text" name="pass"><br/>
   <input type = "submit" name = "submit" value="login!">
   <input type = "submit" name = "attempts" value = "attempts">
