@@ -6,11 +6,19 @@ try {
     $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+
+    if(!isset($_SESSION['attempts'])){
+     $_SESSION['attempts']=0;
+     }
+
     if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
     if(empty($name) || empty($pass)){
-        echo '<label>All fields are required</label>';
+        echo "Invalid Username/Password";
+       $_SESSION['attempts']++;
+     echo "<br>"."attempts are ".$_SESSION['attempts'];
+      echo "<p><a href= 'index.php'> TRY AGAIN</a>";
     }else{
         $query="SELECT * FROM users WHERE username=:name AND password=:pass";
         $statement=$db->prepare($query);
@@ -21,12 +29,10 @@ try {
         $count=$statement->rowCount();
         if($count>0){
             $_SESSION['name']=$_POST['name'];
+            $_SESSION['is authenticated']= true;
             header("location:welcome.php");
         }
-        else{
-            echo'<label>Wrong data</label>';
-            echo "<p><a href= 'index.php'> home page</a>";
-        }
+        
     }
     
     }
@@ -37,4 +43,8 @@ catch(PDOException $e)
     $message = $e->getMessage();
     }
     //$db = null;
+    if(isset( $_POST['attempts'])){
+     echo "attempts are ".$_SESSION['attempts'];
+     echo "<p><a href= 'index.php'> HOME PAGE</a>"; 
+}
 ?> 
