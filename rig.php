@@ -1,14 +1,14 @@
 <?php
 
 try {
-    $conn = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
+    $db = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
     if(isset($_POST['rig'])){
     $name=$_POST['name'];
     $email=$_POST['email'];
     $pass1=$_POST['pass'];
-    $hash=password_hash($pass1,PASSWORD_DEFAULT);
-    //$pass=md5($pass);// hash password for security
-    $insert=$conn->prepare("INSERT INTO users(username, password, email)
+    $hash=password_hash($pass1,PASSWORD_DEFAULT);// hash password for security
+    //$pass=md5($pass);// hash password
+    $insert=$db->prepare("INSERT INTO users(username, password, email)
     						 values(:name,:pass,:email)");
     $insert->bindParam('name',$name);
     $insert->bindParam('email',$email);
@@ -23,7 +23,7 @@ catch(PDOException $e)
     {
     echo $sql . "<br>" . $e->getMessage();
     }
-    $conn = null;
+    $db = null;
 ?> 
 
 <h1/> sing up<h1 /h1>
