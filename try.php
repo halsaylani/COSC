@@ -14,11 +14,12 @@ try {
     if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
-      $isCorrect=password_verify($pass,$_POST['hash']);
+
+      $isCorrect=password_verify($pass,$hash);
 
       //$pass=md5($pass);
     if(empty($name) || empty($pass)){
-        echo "Invalid Username/Password";
+        echo "Username/Password are Required";
        $_SESSION['attempts']++;
      echo "<br>"."attempts are ".$_SESSION['attempts'];
       echo "<p><a href= 'index.php'> TRY AGAIN</a>";
@@ -34,6 +35,12 @@ try {
             $_SESSION['name']=$_POST['name'];
             $_SESSION['is authenticated']= true;
             header("location:welcome.php");
+        }else{
+          echo "Invalid username/password";
+          $_SESSION['attempts']++;
+     echo "<br>"."attempts are ".$_SESSION['attempts'];
+          echo "<p><a href= 'index.php'> TRY AGAIN</a>";
+
         }
         
     }
