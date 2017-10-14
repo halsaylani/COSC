@@ -14,6 +14,9 @@ try {
     if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
+      $isCorrect=password_verify($pass,$_POST['hash']);
+
+      //$pass=md5($pass);
     if(empty($name) || empty($pass)){
         echo "Invalid Username/Password";
        $_SESSION['attempts']++;
