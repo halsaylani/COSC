@@ -5,12 +5,14 @@ try {
     if(isset($_POST['rig'])){
     $name=$_POST['name'];
     $email=$_POST['email'];
-    $pass=$_POST['pass'];
+    $pass1=$_POST['pass'];
+    $hash=password_hash($pass1,PASSWORD_DEFAULT);
+    //$pass=md5($pass);// hash password for security
     $insert=$conn->prepare("INSERT INTO users(username, password, email)
     						 values(:name,:pass,:email)");
     $insert->bindParam('name',$name);
     $insert->bindParam('email',$email);
-    $insert->bindParam('pass',$pass);
+    $insert->bindParam('pass',$pass1);
     $insert->execute();
     header("location:index.php");
     
