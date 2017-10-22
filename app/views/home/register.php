@@ -1,4 +1,5 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
+<html>
 <div class="container">
     <div class="page-header" id="banner">
         <div class="row">
@@ -13,27 +14,12 @@
         <div class="col-lg-12">
             <form class="form-horizontal" action="/login/register" method="post">
 			    <fieldset>
-					<div class="form-group">
-					  <label for="username" class="col-lg-2 control-label">New Username</label>
-					  <div class="col-lg-10">
-						<input type="text" class="form-control" name="username" placeholder="Username">
-					  </div>
-					</div>
-					<div class="form-group">
-					  <label for="password" class="col-lg-2 control-label">New Password</label>
-					  <div class="col-lg-10">
-						<input type="password" class="form-control" name="password" placeholder="Password">
-					  </div>
-					</div>
-					<div class="form-group">
-					  <div class="col-lg-10 col-lg-offset-2">
-						<button type="submit" class="btn btn-primary">Submit</button>
-					  </div>
-					</div>
-			    </fieldset>
-			</form>
-			<a href="/login/register"> Sign up here </a>
-        </div>
-    </div>
+		Username <input type="username"  name="name"><br>
+  Password <input type="text" name="pass"><br/>
+  email <input type="text" name="email"><br/>
+   <input type = "submit" name = "rig" value = "Register">
+</form>
+</body>
+</html>
 
     <?php require_once '../app/views/templates/footer.php' ?>
