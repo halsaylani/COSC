@@ -3,13 +3,10 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
+	if(isset($_POST['submit'])){
+      $user->name=$_POST['name'];
+      $user->pass=$_POST['pass'];
 
-        if (isset($_POST['username'])) {
-            $user->username = $_POST['username'];
-        }
-
-        if (isset($_POST['password'])) {
-            $user->password = $_POST['password'];
         }
 
         $user->authenticate();
@@ -23,12 +20,14 @@ class Login extends Controller {
 	
 	public function register () {
 		$user = $this->model('User');
+
+	if(isset($_POST['rig'])){
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $pass1=$_POST['pass'];
+    $hash=password_hash($pass1,PASSWORD_DEFAULT);// hash password for security
 		
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			
-			$user->register($username, $password);
+			$user->register($name, $pass1,$email);
 			$_SESSION['auth'] = true;
 		}
 		
