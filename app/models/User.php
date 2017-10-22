@@ -17,27 +17,27 @@ class User {
          */
 		 
 		$db = db_connect();
-        $statement = $db->prepare("select * from users
-                                WHERE name = :name;
-                ");
-        $statement->bindValue(':name', $this->username);
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-		
-		if ($rows) {
-			$this->auth = true;
-			$_SESSION['name'] = $rows[0]['name'];
-			$_SESSION['age'] = $rows[0]['age'];
+        $query="SELECT * FROM users WHERE username=:name AND password=:pass";
+        $statement=$db->prepare($query);
+        $statement->execute(array(
+            'name' => $_POST['name'],
+            'pass' => $_POST['pass']
+        ));
+        $count=$statement->rowCount();
+        if($count>0){
+	$this->auth = true;
+            $_SESSION['name']=$_POST['name'];
+			
 		}
     }
 	
-	public function register ($username, $password) {
+	public function register ($username, $password, $email) {
 		$db = db_connect();
-        $statement = $db->prepare("INSERT INTO users (name)"
-                . " VALUES (:name); ");
-
-        $statement->bindValue(':name', $username);
-        $statement->execute();
+        $insert=$db->prepare("INSERT INTO users(username, password, email)values(:name,:pass,:email)");
+    $insert->bindParam('name',$name);
+    $insert->bindParam('email',$email);
+    $insert->bindParam('pass',$pass1);
+    $insert->execute();
 
 	}
 
