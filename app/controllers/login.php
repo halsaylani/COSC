@@ -3,6 +3,7 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
+
 	if(isset($_POST['submit'])){
       $user->name=$_POST['name'];
       $user->pass=$_POST['pass'];
