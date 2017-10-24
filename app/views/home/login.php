@@ -1,9 +1,4 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
-<div>
-                <h1>You are not logged in! haha</h1>
-               
-    </div>
-
     <div class="row">
         <h1/> welcome to the website<h1 /h1>
 <html>
