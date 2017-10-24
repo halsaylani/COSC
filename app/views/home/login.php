@@ -14,10 +14,8 @@
   Password <input type="text" name="pass"><br/>
   <input type = "submit" name = "submit" value="login!">
   <input type = "submit" name = "attempts" value = "attempts">
-   <?php echo "<p><a href= 'rig.php'> Create an acount</a>";?>
+     <a href= "/login/register"> Create an account</a>
 </form>
-			<a href="/login/register"> Sign up here </a>
-        
-    </div>
+</div>
 
     <?php require_once '../app/views/templates/footer.php' ?>
