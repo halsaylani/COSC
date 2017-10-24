@@ -28,7 +28,7 @@ class Login extends Controller {
     $pass1=$_POST['pass'];
     $hash=password_hash($pass1,PASSWORD_DEFAULT);
 			
-			$user->register($name,$pass1,$email);
+			$user->register($name,$hash,$email);
 			$_SESSION['auth'] = true;
 		}
 		
