@@ -3,9 +3,7 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
-        if(!isset($_SESSION['attempts'])){
-     $_SESSION['attempts']=0;
-    }
+       
         if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
@@ -17,6 +15,10 @@ class Login extends Controller {
           echo "<br>"."attempts are ".$_SESSION['attempts'];
           //echo "<p><a href= 'index.php'> TRY AGAIN</a>";
     }
+    if($_SESSION['attempts']>3){
+      $_SESSION['attempts']=0;
+      echo" you r out for 60 seconds";
+    }
     }
 	public function register () {
 		$user = $this->model('User');
@@ -25,6 +27,10 @@ class Login extends Controller {
     $name=$_POST['name'];
     $email=$_POST['email'];
     $pass1=$_POST['pass'];
+    if($pass1<8){
+      echo 'password should at least contain 8 Characters';
+      die();
+    }
     $hash=password_hash($pass1,PASSWORD_DEFAULT);
 			$user->register($name,$hash,$email);
 			//$_SESSION['auth'] = true;
