@@ -9,6 +9,7 @@
   Password <input type="text" name="pass"><br/>
   email <input type="text" name="email"><br/>
    <input type = "submit" name = "rig" value = "Register">
+   <a href= "../app/views/login.php"> login</a>
 </form>
     </div>
 
