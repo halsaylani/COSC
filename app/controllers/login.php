@@ -7,13 +7,15 @@ class Login extends Controller {
         if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
-        $user->authenticate($name,$pass);
+      $checkpass=password_verify($pass,$hash);
+        $user->authenticate($name,$checkpass);
         header('Location: /home');
     } else{
           echo "Invalid username/password";
           $_SESSION['attempts']++;
           echo "<br>"."attempts are ".$_SESSION['attempts'];
-          //echo "<p><a href= 'index.php'> TRY AGAIN</a>";
+          echo " after 3 attempts you will be stoped";
+          echo "<p><a href= '../app/views/login.php'> TRY AGAIN</a>";
     }
     if($_SESSION['attempts']>3){
       $_SESSION['attempts']=0;
