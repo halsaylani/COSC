@@ -3,12 +3,17 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
-
+        
         if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
         $user->authenticate($name,$pass);
         header('Location: /home');
+    }else{
+          echo "Invalid username/password";
+          $_SESSION['attempts']++;
+          echo "<br>"."attempts are ".$_SESSION['attempts'];
+          //echo "<p><a href= 'index.php'> TRY AGAIN</a>";
     }
     }
 	public function register () {
