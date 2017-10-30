@@ -1,5 +1,7 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
-
+ <head>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head> 
         <div class="row">
             <div class="col-lg-12">
                 <h1>sing up here</h1>

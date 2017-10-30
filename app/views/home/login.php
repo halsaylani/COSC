@@ -1,4 +1,7 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
+<head>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head> 
     <div class="row">
         <h1/> welcome to the website<h1 /h1>
 <html>
