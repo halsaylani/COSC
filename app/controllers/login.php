@@ -9,7 +9,7 @@ class Login extends Controller {
       $pass=$_POST['pass'];
       $email=$_POST['email'];
       //$checkpass=password_verify($pass,$hash);
-        $user->authenticate($name,$pass);
+        $user->authenticate($name,$pass,$email);
         header('Location: /home');
     } else{
           echo "Invalid username/password";

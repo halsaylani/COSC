@@ -21,12 +21,13 @@ class User {
         $statement=$db->prepare($query);
         $statement->execute(array(
             'name' => $_POST['name'],
-            'pass' => $_POST['pass']
+            'pass' => $_POST['pass'],
         ));
         $count=$statement->rowCount();
         if($count>0){
             //$this->auth=true;
             $_SESSION['name']=$_POST['name'];
+            $_SESSION['email']= $_POST['email'];
             $_SESSION['auth'] = true;
         }
     
