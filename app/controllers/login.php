@@ -20,7 +20,7 @@ class Login extends Controller {
     }
     if($_SESSION['attempts']>3){
       $_SESSION['attempts']=0;
-      echo" you r out for 60 seconds";
+      echo" you are out for 60 seconds";
     }
     }
 	public function register () {
