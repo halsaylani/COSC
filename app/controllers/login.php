@@ -7,8 +7,9 @@ class Login extends Controller {
         if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
-      $checkpass=password_verify($pass,$hash);
-        $user->authenticate($name,$checkpass);
+      $email=$_POST['email'];
+      //$checkpass=password_verify($pass,$hash);
+        $user->authenticate($name,$pass);
         header('Location: /home');
     } else{
           echo "Invalid username/password";

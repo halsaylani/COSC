@@ -10,6 +10,7 @@
   <label for="username">Username</label>
   <input type="username"  name="name"><br>
   Password <input type="text" name="pass"><br/>
+  Email <input type="text" name="email"><br/>
   <input type = "submit" name = "submit" value="login!">
   <input type = "submit" name = "attempts" value = "attempts">
      <a href= "/login/register"> Create an account</a>
