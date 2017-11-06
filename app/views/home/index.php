@@ -2,7 +2,9 @@
 
 <div>
     <div>
+    	
             <p> <?=$data['message']?> </p>
+            <a href= '/remind/index'> Reminders</a>
         </div>
     </div>
 
