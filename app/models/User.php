@@ -24,24 +24,32 @@ class User {
             'pass' => $_POST['pass'],
         ));
         $count=$statement->rowCount();
-        if($count>0){
+        if($count){
             //$this->auth=true;
             $_SESSION['name']=$_POST['name'];
-            $_SESSION['email']= $_POST['email'];
             $_SESSION['auth'] = true;
+
         }
     
     //$db = null;
     }
-	public function register ($name, $pass, $email) {
+	public function register ($name, $pass) {
 		
     $db=db_connect();
-    $insert=$db->prepare("INSERT INTO users(username, password, email)values(:name,:pass,:email)");
+    $insert=$db->prepare("INSERT INTO users(username, password)values(:name,:pass)");
     $insert->bindParam('name',$name);
-    $insert->bindParam('email',$email);
     $insert->bindParam('pass',$pass);
     $insert->execute();
    
 }
+public function get_amount () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT logtype FROM tuition WHERE username=:name;");
+        $statement->bindValue(':name', $_SESSION['name']);
+        $statement->execute();
+        $rows = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $rows;
+    }
 
 }
