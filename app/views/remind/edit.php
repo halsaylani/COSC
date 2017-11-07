@@ -1,5 +1,4 @@
 <?php require_once '../app/views/templates/header.php'?>
-
 <h2>edit Reminder </h2>
 
 <table class='table table-striped table-condensed'>
