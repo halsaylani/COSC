@@ -34,10 +34,10 @@ class Reminders {
     $insert->bindParam('description',$description);
     $insert->execute();
 	}
-	public function updateReminder($id,$subject,$description) {
+	public function updateReminder($subject,$description) {
 		$db = db_connect();
-    $insert=$db->prepare("UPDATE notes SET subject=:subject , description= :description");
-    //$insert->bindValue('name', $username);
+    $insert=$db->prepare("INSERT INTO notes (username,subject,description) VALUES(:name,:subject ,:description)");
+    $insert->bindValue(':name', $_SESSION['name']);
     $insert->bindParam('subject',$subject);
     $insert->bindParam('description',$description);
     $insert->execute();
@@ -61,40 +61,5 @@ class Reminders {
 		
 		return $rows;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
