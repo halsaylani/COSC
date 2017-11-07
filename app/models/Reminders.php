@@ -2,10 +2,8 @@
 
 class Reminders {
     
-    public function __construct() {
-        
+    public function __construct() {   
     }
-	
 	public function get_reminders () {
 		$db = db_connect();
         $statement = $db->prepare("SELECT * FROM notes
@@ -36,14 +34,12 @@ class Reminders {
 	}
 	public function updateReminder($subject,$description) {
 		$db = db_connect();
-    $insert=$db->prepare("INSERT INTO notes (username,subject,description) VALUES(:name,:subject ,:description)");
+    $insert=$db->prepare("UPDATE notes SET username=:name,subject=:subject,description=:description) ");
     $insert->bindValue(':name', $_SESSION['name']);
     $insert->bindParam('subject',$subject);
     $insert->bindParam('description',$description);
     $insert->execute();
-
 	}
-	
 	public function removeItem($id) {
 		$db = db_connect();
         $statement = $db->prepare("UPDATE notes SET deleted = 1 WHERE id = :id");
