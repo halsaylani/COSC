@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Add New Reminder</title>
-</head>
+</head> 
  
 <body>
     <br/><br/>
@@ -18,7 +18,7 @@
             </tr>
             <tr> 
                 <td></td>
-                <td><input type="submit" name="submit" value="Add"></td>
+                <td><input type="submit" name="add" value="Add"></td>
             </tr>
         </table>
     </form>
