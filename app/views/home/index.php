@@ -1,9 +1,10 @@
-<?php require_once '../app/views/templates/header.php' ?>
+<?php //require_once '../app/views/templates/header.php' ?>
 
 <div>
     <div>
     	
             <p> <?=$data['message']?> </p>
+            <a href="/logout/index">Logout</a>
             <a href= '/remind/index'> Reminders</a>
         </div>
     </div>
