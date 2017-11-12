@@ -30,9 +30,16 @@ class User {
             $_SESSION['auth'] = true;
 
         }
-    
-    //$db = null;
     }
+    public function LastVisit ($LastVisit) {
+        
+    $db=db_connect();
+    $insert=$db->prepare("UPDATE users SET LastVisit =:LastVisit WHERE username=:name");
+    $insert->bindParam(':name',$_SESSION['name']);
+    $insert->bindParam(':LastVisit',$LastVisit);
+    $insert->execute();
+   
+}
 	public function register ($name, $pass) {
 		
     $db=db_connect();
