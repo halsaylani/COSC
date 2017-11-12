@@ -5,7 +5,9 @@ class Home extends Controller {
     public function index($name = '') {		
         $user = $this->model('User');
 		
-		$message='-welcome '.$_SESSION['name'].'<br>'.'-Today is ' . date("Y/m/d");
+		$message='-welcome '.$_SESSION['name'].'<br>'.
+        '-Today is ' . date("Y/m/d").'/ '.date("l").'<br>'.
+        'LastVisit:'.$_SESSION['LastVisit'];
 		
         $this->view('home/index', ['message' => $message]);
     }
