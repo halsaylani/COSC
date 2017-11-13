@@ -17,6 +17,8 @@ class Login extends Controller {
       $pass=$_POST['pass'];
       //$checkpass=password_verify($pass,$hash);
         $user->authenticate($name,$pass);
+        $user->getLastVisit();
+
         header('Location: /home');
       }else{
       $_SESSION['attempts']++;
