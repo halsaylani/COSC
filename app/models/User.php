@@ -17,7 +17,7 @@ class User {
          */
 		 $db=db_connect();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query="SELECT * FROM users WHERE username=:name AND password=:pass";
+        $query="SELECT LastVisit FROM users WHERE username=:name ";
         $statement=$db->prepare($query);
         $statement->execute(array(
             'name' => $_POST['name'],
@@ -27,10 +27,26 @@ class User {
         if($count){
             //$this->auth=true;
             $_SESSION['name']=$_POST['name'];
+
             $_SESSION['auth'] = true;
 
         }
+    
     }
+     public function getLastVisit () {
+        
+    $db=db_connect();
+    $insert=$db->prepare("SELECT LastVisit FROM users WHERE username=:name");
+    $insert->bindParam(':name',$_SESSION['name']);
+    $insert->execute();
+    $rows = $insert->fetchAll(PDO::FETCH_ASSOC);
+     if($rows){
+            //$this->auth=true;
+            $_SESSION['LastVisit']=':LastVisit';
+
+        }
+        return $rows;
+}
     public function LastVisit ($LastVisit) {
         
     $db=db_connect();
@@ -38,7 +54,6 @@ class User {
     $insert->bindParam(':name',$_SESSION['name']);
     $insert->bindParam(':LastVisit',$LastVisit);
     $insert->execute();
-   
 }
 	public function register ($name, $pass) {
 		
