@@ -3,14 +3,14 @@
 <body>
 <form method="post" action="login/index">
   <fieldset>
-    <legend>welcome to the website</legend>
+    <h1>welcome to the website</h1>
     <div class="form-group">
-      <label for="exampleInputEmail1">Username</label>
-      <input class="form-control" placeholder="Username" type="username" name="name">
+      <label for="exampleUsername">Username</label>
+      <input class="form-contro" placeholder="Username" type="username" name="name">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input class="form-control" placeholder="Password" type="password" name="pass">
+      <input class="center-control" placeholder="Password" type="password" name="pass">
     </div>
     <button type="submit" name = "submit" class="btn btn-primary">Login</button>
     <a href= "/login/register"> Create an account</a>
@@ -19,4 +19,4 @@
 </body>
 </html>
 
-    <?php require_once '../app/views/templates/footer.php' ?>
+    <?php require_once '../app/views/templates/footerPublic.php' ?>
