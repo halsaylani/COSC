@@ -18,4 +18,5 @@
         </tr>
     <?php }?>
 </table>
-<a href="/remind/index">back to Reminders </a>
+<a href="/remind/index"><button type="button" class="btn btn-outline-secondary">To Reminders</button> </a>
+<?php require_once '../app/views/templates/footer.php'?>
