@@ -11,14 +11,13 @@ class Login extends Controller {
         if($_SESSION['attempts']>=3){
       $locktime=(time() + 60);
       $_SESSION['lockTime'] = $locktime;
+      header('Location: /home/Attempts');
     }
         if(isset($_POST['submit'])){
       $name=$_POST['name'];
       $pass=$_POST['pass'];
       //$checkpass=password_verify($pass,$hash);
         $user->authenticate($name,$pass);
-        $user->getLastVisit();
-
         header('Location: /home');
       }else{
       $_SESSION['attempts']++;
