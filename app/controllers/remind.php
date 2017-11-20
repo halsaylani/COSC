@@ -31,17 +31,18 @@ class Remind extends Controller {
         	$r->addReminder($subject,$description);
         }
     }//////////////////////////////////
-	public function update($id='') {
-		$r = $this->model('Reminders');
-        $item = $r->get_reminder($id);
-		$this->view('remind/update', ['item' => $item] );
-    }
-    public function updateReminder($id=''){
-    	$r = $this->model('Reminders');
-    	if(isset($_POST['update'])){
-        	$subject=$_POST['subject'];
+	public function update($id) {
+		if (isset($_POST['update'])) {
+            $reminders = $this->model('Reminders');
+            $subject=$_POST['subject'];
         	$description=$_POST['description'];
-        	$r->updateReminder($subject,$description);
+            $reminders->updateReminder($subject, $description);
+            header('Location:/remind');
+        } else {
+            $reminders = $this->model('Reminders');
+            $item = $reminders->get_reminder($id);
+            
+            $this->view('remind/update', ['item' => $item] );
         }
     }
 	public function remove($id = '') {
