@@ -14,10 +14,13 @@ class Login extends Controller {
       header('Location: /home/Attempts');
     }
         if(isset($_POST['submit'])){
-      $name=$_POST['name'];
-      $pass=$_POST['pass'];
+      $user->username=$_POST['name'];
+      $user->password=$_POST['pass'];
+      
       //$checkpass=password_verify($pass,$hash);
-        $user->authenticate($name,$pass);
+        $user->authenticate();
+        
+        $_SESSION['LastVisit']=$user->getLastVisit($_POST['name']);
         header('Location: /home');
       }else{
       $_SESSION['attempts']++;
@@ -34,7 +37,7 @@ class Login extends Controller {
       header("location:/home/error");
       die();
     }
-    $hash=password_hash($pass,PASSWORD_DEFAULT);
+   $hash=password_hash($pass,PASSWORD_DEFAULT);
 			$user->register($name,$hash);
 		}
 	}
