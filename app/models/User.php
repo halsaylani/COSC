@@ -17,7 +17,7 @@ class User {
          */
 		 $db=db_connect();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query="SELECT LastVisit FROM users WHERE username=:name ";
+        $query="SELECT * FROM users WHERE username=:name AND password=:pass ";
         $statement=$db->prepare($query);
         $statement->execute(array(
             'name' => $_POST['name'],
