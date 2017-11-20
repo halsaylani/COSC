@@ -20,8 +20,12 @@ if (isset($_SESSION['auth']) != 1) {
       <li class="nav-item active">
         <a class="nav-link" href="../app/view/home/index">Home <span class="sr-only">(current)</span></a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/remind/index">Reminders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/report/index">Reports</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout/index">Logout</a>
