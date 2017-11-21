@@ -13,7 +13,7 @@
         <tr>
             <td><?=$items['username']?></td>
             <td><?=$items['islogin']?></td>
-            <td><?=$item['timedate']?></td>
+            <td><?=$items['timedate']?></td>
             
         </tr>
     <?php }?>
