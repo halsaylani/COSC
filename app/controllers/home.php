@@ -9,6 +9,14 @@ class Home extends Controller {
 		
         $this->view('home/index', ['message' => $message]);
     }
+    public function admin($name = '') {     
+        $user = $this->model('User');
+        
+        $message='-welcome '.$_SESSION['name'].'<br>'.'-Today is ' . date("Y/m/d").'<br>'.' you are the admin';
+        
+        $this->view('home/admin', ['message' => $message]);
+    }
+
      public function LasiVisit($name = '') { 
         $user = $this->model('User');
         $message2=$_SESSION['LasiVisit'];

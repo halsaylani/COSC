@@ -3,11 +3,9 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
-
         if(!isset($_SESSION['attempts'])){
      $_SESSION['attempts']=0;
     }
-    
         if($_SESSION['attempts']>=3){
       $locktime=(time() + 60);
       $_SESSION['lockTime'] = $locktime;
@@ -20,8 +18,14 @@ class Login extends Controller {
       //$checkpass=password_verify($pass,$hash);
         $user->authenticate();
         
-        $_SESSION['LastVisit']=$user->getLastVisit($_POST['name']);
+        
+         if(isset($_SESSION['role'])!=1){
+          $_SESSION['LastVisit']=$user->getLastVisit($_POST['name']);
         header('Location: /home');
+         }else{
+          header('location:/home/admin');
+         }
+        
       }else{
       $_SESSION['attempts']++;
 
