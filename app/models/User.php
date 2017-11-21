@@ -15,24 +15,40 @@ class User {
          * if username and password good then
          * $this->auth = true;
          */
-		 $db=db_connect();
+         $db=db_connect();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query="SELECT * FROM users WHERE username=:name AND password=:pass ";
+        $query="SELECT username,password,role FROM users WHERE username=:name;";
         $statement=$db->prepare($query);
-        $statement->execute(array(
-            'name' => $_POST['name'],
-            'pass' => $_POST['pass'],
-        ));
+        $statement->bindValue(':name', $this->username);
+        $statement->execute();
         $count=$statement->rowCount();
         if($count){
             //$this->auth=true;
-            $_SESSION['name']=$_POST['name'];
-
+            $_SESSION['name']=$this->username;
             $_SESSION['auth'] = true;
 
         }
+
+        $statement = $db->prepare("INSERT INTO tuition (username,islogin, ipaddress) VALUES (:name,true, :ipaddress);");
+        $statement->bindValue(':name', $this->username);
+        $statement->bindValue(':ipaddress', $_SERVER['REMOTE_ADDR']);
+        $statement->execute();
     
     }
+       public function checkifadmin () {
+        
+    $db=db_connect();
+    $insert=$db->prepare("SELECT username,password FROM users WHERE role=1");
+    $insert->execute();
+    $rows = $insert->rowCount();
+    if($rows){
+    $role = $rows['role'];
+
+$_SESSION['role'] = $role;
+}
+      
+   
+}
      public function getLastVisit () {
         
     $db=db_connect();

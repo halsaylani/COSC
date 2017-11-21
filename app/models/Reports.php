@@ -6,10 +6,8 @@ class Reports {
     }
 	public function get_reports () {
         $db = db_connect();
-        $statement = $db->prepare("SELECT count(description) FROM notes
-                                WHERE username = :name;");
-        $statement->bindValue(':name', $_SESSION['name']);
-        
+        $statement = $db->prepare("SELECT username ,subject FROM notes
+                                WHERE deleted =0;");
         $statement->execute();
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
@@ -27,8 +25,6 @@ class Reports {
         $db = db_connect();
         $statement = $db->prepare("SELECT username ,islogin,timedate FROM tuition
                                 WHERE islogin =1;");
-
-
         $statement->execute();
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
