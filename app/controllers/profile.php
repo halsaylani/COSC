@@ -1,7 +1,7 @@
 <?php
 
 class Profile extends Controller {
-	
+    
     public function index() {
     	$user=$this->model('Reminders');
         $this->view('profile/index');
@@ -17,12 +17,8 @@ class Profile extends Controller {
         		header('Location: /home/validateage');
         		dei();
         	}
-        	
-
         	$user->personalDetails($_POST['fname'],$_POST['lname'],$_POST['email'],$_POST['pnumber'],$_POST['bdate']);
         	header('location: /home/addedsuccessfully');
-        
-       
-    }
+        }
     }
 }
