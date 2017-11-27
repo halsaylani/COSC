@@ -4,7 +4,7 @@
 <table class='table table-striped table-condensed'>
 	<tr>
 		<th>Subject</th>
-		<th>/descrsssssiption</th>
+		<th>/description</th>
 		<th>/username</th>
 
 	</tr>
