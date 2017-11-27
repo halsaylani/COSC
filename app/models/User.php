@@ -17,14 +17,16 @@ class User {
          */
          $db=db_connect();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query="SELECT username,password,role FROM users WHERE username=:name;";
+        $query="SELECT username,password,role FROM users WHERE username=:name and password=:pass;";
         $statement=$db->prepare($query);
         $statement->bindValue(':name', $this->username);
+        $statement->bindValue(':pass', $this->password);
         $statement->execute();
-        $count=$statement->rowCount();
+        $count=$statement->fetchAll(PDO::FETCH_ASSOC);
         if($count){
             //$this->auth=true;
             $_SESSION['name']=$this->username;
+            $_SESSION['role']=$count[0]['role'];
             $_SESSION['auth'] = true;
 
         }
@@ -35,7 +37,7 @@ class User {
         $statement->execute();
     
     }
-       public function checkifadmin () {
+     public function checkifadmin () {
         
     $db=db_connect();
     $insert=$db->prepare("SELECT username,password FROM users WHERE role=1");
@@ -49,32 +51,28 @@ $_SESSION['role'] = $role;
       
    
 }
-     public function getLastVisit () {
-        
-    $db=db_connect();
-    $insert=$db->prepare("SELECT LastVisit FROM users WHERE username=:name");
-    $insert->bindParam(':name',$_SESSION['name']);
-    $insert->execute();
-    $rows = $insert->fetchAll(PDO::FETCH_ASSOC);
-     if($rows){
-            //$this->auth=true;
-            $_SESSION['LastVisit']=':LastVisit';
 
-        }
-        return $rows;
-}
-    public function LastVisit ($LastVisit) {
+     public function getLastVisit ($name) {
         
     $db=db_connect();
-    $insert=$db->prepare("UPDATE users SET LastVisit =:LastVisit WHERE username=:name");
-    $insert->bindParam(':name',$_SESSION['name']);
-    $insert->bindParam(':LastVisit',$LastVisit);
+    $insert=$db->prepare("SELECT timedate FROM tuition WHERE username=:name AND islogin=1");
+    $insert->bindParam(':name',$name);
+    $insert->execute();
+      
+   
+}
+    public function LastVisit ($address,$name) {
+        
+    $db=db_connect();
+    $insert=$db->prepare("INSERT INTO  tuition(username,islogin,ipaddress) VALUES (:name,false,:ipaddress);");
+    $insert->bindParam(':name',$name);
+    $insert->bindParam(':ipaddress',$address);
     $insert->execute();
 }
 	public function register ($name, $pass) {
 		
     $db=db_connect();
-    $insert=$db->prepare("INSERT INTO users(username, password)values(:name,:pass)");
+    $insert=$db->prepare("INSERT INTO users(username, password,role)values(:name,:pass,3)");
     $insert->bindParam('name',$name);
     $insert->bindParam('pass',$pass);
     $insert->execute();
