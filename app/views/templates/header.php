@@ -3,10 +3,6 @@ if (isset($_SESSION['auth']) != 1) {
     header('Location: /home');
 }
 ?>
-
-
-
-
 <link href= "/css/style.css" rel="stylesheet" type="text/css"/>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -20,17 +16,20 @@ if (isset($_SESSION['auth']) != 1) {
       <li class="nav-item active">
         <a class="nav-link" href="../app/view/home/index">Home <span class="sr-only">(current)</span></a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" href="/remind/index">Reminders</a>
       </li>
+      <?php if($_SESSION['role']==1){?>
       <li class="nav-item">
         <a class="nav-link" href="/report/index">Reports</a>
       </li>
+      <?php } ?>
       <li class="nav-item">
         <a class="nav-link" href="/logout/index">Logout</a>
       </li>
     </ul>
-    
+     <li class="nav-item">
+        <a class="nav-link" href="/profile/index">Profile</a>
+      </li>
   </div>
 </nav>
