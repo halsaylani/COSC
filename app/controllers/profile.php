@@ -3,7 +3,7 @@
 class Profile extends Controller {
     
     public function index() {
-    	$user=$this->model('Reminders');
+    	$user=$this->model('Profile');
         $this->view('profile/index');
         if(isset($_POST['update'])){
 

@@ -28,6 +28,12 @@ class Remind extends Controller {
 		if(isset($_POST['add'])){
         	$subject=$_POST['subject'];
         	$description=$_POST['description'];
+
+        	if($r->profileupdate()==false){
+          header('Location: /home/profileupdate');
+          dei();	
+      }
+
         	$r->addReminder($subject,$description);
         }
     }//////////////////////////////////

@@ -4,11 +4,9 @@
 <table class='table table-striped table-condensed'>
 	<tr>
 		<th>Subject</th>
-		<th>/description</th>
+		<th>/descrsssssiption</th>
 		<th>/username</th>
-
 	</tr>
-
 	<?php echo $data['list']?>
     <?php foreach ($data['list'] as $items){ ?>
         <tr>
@@ -20,4 +18,5 @@
         </tr>
     <?php }?>
 </table>
+<a href="/report/index"><button type="button" class="btn btn-outline-fist">Back to Reports</button></a>
 <?php require_once '../app/views/templates/footer.php' ?>

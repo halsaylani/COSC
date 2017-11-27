@@ -6,16 +6,14 @@
          <th>/username</th>
         <th>Num of logins</th>
         <th>Date</th>
-       
-
     </tr>
     <?php foreach ($data['list'] as $items){ ?>
         <tr>
             <td><?=$items['username']?></td>
             <td><?=$items['islogin']?></td>
             <td><?=$items['timedate']?></td>
-            
         </tr>
     <?php }?>
 </table>
+    <a href="/report/index"><button type="button" class="btn btn-outline-fist">back to reports</button></a> 
 <?php require_once '../app/views/templates/footer.php' ?>

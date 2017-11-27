@@ -6,4 +6,5 @@
     <input class="form-control" placeholder="2017/2/3" type="text" name="hours">
     <button type="submit" name = "find" class="btn btn-outline-secondary">Find</button>
 </form>
+<a href="/report/index"><button type="button" class="btn btn-outline-fist">Back to Reports</button></a>
 <?php require_once '../app/views/templates/footer.php' ?>
