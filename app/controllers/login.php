@@ -14,18 +14,12 @@ class Login extends Controller {
         if(isset($_POST['submit'])){
       $user->username=$_POST['name'];
       $user->password=$_POST['pass'];
-      
       //$checkpass=password_verify($pass,$hash);
         $user->authenticate();
-        
-        
-         if(isset($_SESSION['role'])!=1){
+
           $_SESSION['LastVisit']=$user->getLastVisit($_POST['name']);
+        }
         header('Location: /home');
-         }else{
-          header('location:/home/admin');
-         }
-        
       }else{
       $_SESSION['attempts']++;
 
