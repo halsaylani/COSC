@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2017 at 08:47 AM
+-- Generation Time: Nov 28, 2017 at 04:33 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -25,6 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `info`
+--
+
+CREATE TABLE `info` (
+  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phonenumber` int(255) NOT NULL,
+  `birthdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notes`
 --
 
@@ -34,7 +47,7 @@ CREATE TABLE `notes` (
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `deleted` int(255) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `cd` date NOT NULL
+  `cd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -42,14 +55,17 @@ CREATE TABLE `notes` (
 --
 
 INSERT INTO `notes` (`id`, `subject`, `description`, `deleted`, `username`, `cd`) VALUES
-(3, 'php', 'good', 0, 'ali', '2017-11-07'),
-(7, 'hi', 'a like this website', 0, 'q', '2017-11-10'),
-(8, 'hellow ', 'baby', 0, 'q', '0000-00-00'),
-(9, 'sssssss', 'wwwwwww', 1, 'hussan', '0000-00-00'),
-(10, 'hi', 'hussan', 0, 'm3tsem', '0000-00-00'),
-(15, 'hla', 'hussan', 0, 'hussan', '0000-00-00'),
-(16, 'test', 'web', 0, 'hussan', '0000-00-00'),
-(17, 'yes', 'no', 0, 'hussan', '0000-00-00');
+(3, 'php', 'good', 0, 'ali', '2017-11-07 05:00:00'),
+(7, 'hi', 'a like this website', 0, 'q', '2017-11-10 05:00:00'),
+(8, 'hellow ', 'baby', 0, 'q', '0000-00-00 00:00:00'),
+(9, 'sssssss', 'wwwwwww', 1, 'hussan', '0000-00-00 00:00:00'),
+(10, 'hi', 'hussan', 0, 'm3tsem', '0000-00-00 00:00:00'),
+(15, 'hla', 'hussan', 0, 'hussan', '0000-00-00 00:00:00'),
+(16, 'test', 'web', 0, 'hussan', '0000-00-00 00:00:00'),
+(17, 'yes', 'no', 0, 'hussan', '0000-00-00 00:00:00'),
+(18, 'aaass', 'ddddd', 0, 'hussan', '2017-11-27 08:02:38'),
+(20, 'sssssss', 'ddddddddd', 0, 'hussan', '2017-11-27 08:03:22'),
+(21, 'dddd', 'fff', 0, 'hussan', '2017-11-27 08:04:33');
 
 -- --------------------------------------------------------
 
@@ -70,6 +86,48 @@ INSERT INTO `permissions` (`role`, `permission`) VALUES
 (1, 'admin'),
 (2, 'manager'),
 (3, 'staff');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personalDetails`
+--
+
+CREATE TABLE `personalDetails` (
+  `id` int(255) NOT NULL,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phonenumber` int(10) NOT NULL,
+  `birthdate` date NOT NULL,
+  `timedate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `emailaddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `personalDetails`
+--
+
+INSERT INTO `personalDetails` (`id`, `firstname`, `lastname`, `phonenumber`, `birthdate`, `timedate`, `username`, `emailaddress`) VALUES
+(9, '', '', 0, '0000-00-00', '2017-11-26 20:18:58', 'hussan', ''),
+(10, '', '', 222222222, '0000-00-00', '2017-11-26 20:19:08', 'hussan', ''),
+(11, 'hussan', 'alsaylani', 222222222, '2017-11-01', '2017-11-26 20:22:46', 'hussan', ''),
+(12, 'hussan', 'alsaylani', 222222222, '2017-11-01', '2017-11-26 20:23:37', 'hussan', ''),
+(15, 'hussn', 'alsaylni', 1, '0000-00-00', '2017-11-26 20:28:21', 'hussan', 'has@mail.com'),
+(16, 'hussn', 'alsaylni', 1, '0000-00-00', '2017-11-26 20:51:07', 'hussan', 'has@mail.com'),
+(17, 'hussn', 'alsaylni', 1, '0000-00-00', '2017-11-26 20:54:25', 'hussan', 'has@mail.com'),
+(18, 'hussn', 'alsaylni', 1, '0000-00-00', '2017-11-26 20:56:53', 'hussan', 'has@mail.com'),
+(25, '', '', 0, '0000-00-00', '2017-11-26 21:35:01', 'hussan', ''),
+(26, 'hussan', 'alsaylani', 222222222, '1996-10-14', '2017-11-26 21:35:36', 'hussan', 'ha@mw'),
+(30, 'abo', 'fz', 222222222, '2017-11-06', '2017-11-26 21:39:00', 'hussan', 'ha@mw'),
+(41, 'bb', 'dd', 1, '2017-11-26', '2017-11-27 05:41:20', 'hussan', 'ha,ail'),
+(46, 'hussan', 'alsaylani', 1111111111, '2017-11-13', '2017-11-27 06:02:39', 'hussan', 'hasooo7t@hotmail.com'),
+(47, 'hussan', 'alsaylani', 1111111111, '2017-11-13', '2017-11-27 06:03:40', 'hussan', 'hasooo7t@hotmail.com'),
+(48, 'hussan', 'alsaylani', 22, '2017-11-13', '2017-11-27 06:04:03', 'hussan', 'hasooo7t@hotmail.com'),
+(49, 'hussan', 'alsaylani', 22, '2017-11-13', '2017-11-27 06:04:27', 'hussan', 'hasooo7t@hotmail.com'),
+(50, 'hussan', 'alsaylani', 222234, '2017-11-20', '2017-11-27 06:04:41', 'hussan', 'hasooo7t@hotmail.com'),
+(51, 'hussan', 'alsaylani', 3333333, '1985-11-07', '2017-11-27 06:55:28', 'hussan', 'hasooo7t@hotmail.com'),
+(52, 'hussan', 'alsaylani', 334342334, '1983-11-06', '2017-11-27 07:01:06', 'hussan', 'hasooo7t@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -184,7 +242,46 @@ INSERT INTO `tuition` (`id`, `username`, `ipaddress`, `islogin`, `timedate`, `co
 (124, 'hussan', '127.0.0.1', 0, '2017-11-21 07:23:23', 0),
 (125, 'alsaylani', '127.0.0.1', 1, '2017-11-21 07:23:28', 0),
 (126, 'alsaylani', '127.0.0.1', 0, '2017-11-21 07:24:28', 0),
-(127, 'hussan', '127.0.0.1', 1, '2017-11-21 07:24:33', 0);
+(127, 'hussan', '127.0.0.1', 1, '2017-11-21 07:24:33', 0),
+(128, 'hussan', '127.0.0.1', 1, '2017-11-22 21:11:59', 0),
+(129, 'hussan', '127.0.0.1', 0, '2017-11-22 21:12:04', 0),
+(130, 'hussan', '127.0.0.1', 1, '2017-11-22 21:12:31', 0),
+(131, 'hussan', '127.0.0.1', 0, '2017-11-22 21:23:04', 0),
+(132, 'hussan', '127.0.0.1', 1, '2017-11-22 21:23:45', 0),
+(133, 'hussan', '127.0.0.1', 0, '2017-11-22 21:23:48', 0),
+(134, 'hussan', '127.0.0.1', 1, '2017-11-22 21:23:54', 0),
+(135, 'hussan', '127.0.0.1', 0, '2017-11-22 21:24:04', 0),
+(136, 'hussan', '127.0.0.1', 1, '2017-11-22 21:24:10', 0),
+(137, 'hussan', '127.0.0.1', 0, '2017-11-23 00:47:01', 0),
+(138, 'hussan', '127.0.0.1', 1, '2017-11-25 03:05:12', 0),
+(139, 'hussan', '127.0.0.1', 0, '2017-11-25 03:05:30', 0),
+(140, '', '127.0.0.1', 1, '2017-11-25 03:05:47', 0),
+(141, 's', '127.0.0.1', 1, '2017-11-25 03:05:50', 0),
+(142, '', '127.0.0.1', 1, '2017-11-25 03:05:52', 0),
+(143, 'hussana', '127.0.0.1', 1, '2017-11-25 03:05:57', 0),
+(144, 'hussan', '127.0.0.1', 1, '2017-11-25 03:06:00', 0),
+(145, 'hussan', '127.0.0.1', 0, '2017-11-25 03:06:59', 0),
+(146, 'hussan', '127.0.0.1', 1, '2017-11-25 03:07:45', 0),
+(147, 'hussan', '127.0.0.1', 0, '2017-11-25 03:07:47', 0),
+(148, 'd', '127.0.0.1', 1, '2017-11-25 03:07:49', 0),
+(149, 'hussan', '127.0.0.1', 1, '2017-11-25 03:07:52', 0),
+(150, 'hussan', '127.0.0.1', 1, '2017-11-25 03:07:59', 0),
+(151, 'hussan', '127.0.0.1', 0, '2017-11-25 03:08:01', 0),
+(152, 'hussan', '127.0.0.1', 1, '2017-11-25 03:08:25', 0),
+(153, 'hussan', '127.0.0.1', 0, '2017-11-25 03:08:27', 0),
+(154, 'ali', '127.0.0.1', 1, '2017-11-25 03:08:40', 0),
+(155, 'hussan', '127.0.0.1', 1, '2017-11-26 18:43:03', 0),
+(156, 'hussan', '127.0.0.1', 1, '2017-11-26 18:43:09', 0),
+(157, 'hussan', '127.0.0.1', 0, '2017-11-26 19:11:45', 0),
+(158, 'hussan', '127.0.0.1', 1, '2017-11-26 19:11:51', 0),
+(159, 'hussan', '127.0.0.1', 1, '2017-11-26 19:21:56', 0),
+(160, 'hussan', '127.0.0.1', 0, '2017-11-26 19:22:45', 0),
+(161, 'alsaylani', '127.0.0.1', 1, '2017-11-26 19:23:00', 0),
+(162, 'alsaylani', '127.0.0.1', 0, '2017-11-26 19:24:17', 0),
+(163, 'hussan', '127.0.0.1', 1, '2017-11-26 19:24:23', 0),
+(164, 'hussan', '127.0.0.1', 1, '2017-11-27 05:16:53', 0),
+(165, 'hussan', '127.0.0.1', 0, '2017-11-27 05:46:50', 0),
+(166, 'hussan', '127.0.0.1', 1, '2017-11-27 05:46:57', 0);
 
 -- --------------------------------------------------------
 
@@ -230,6 +327,12 @@ ALTER TABLE `permissions`
   ADD PRIMARY KEY (`role`);
 
 --
+-- Indexes for table `personalDetails`
+--
+ALTER TABLE `personalDetails`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tuition`
 --
 ALTER TABLE `tuition`
@@ -249,7 +352,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -258,10 +361,16 @@ ALTER TABLE `permissions`
   MODIFY `role` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `personalDetails`
+--
+ALTER TABLE `personalDetails`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT for table `tuition`
 --
 ALTER TABLE `tuition`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `users`
