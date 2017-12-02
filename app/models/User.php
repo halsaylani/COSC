@@ -51,7 +51,55 @@ $_SESSION['role'] = $role;
       
    
 }
-
+public function validate_age($bdate, $age) {
+     
+        $dates = explode("-", $bdate); 
+         
+        $year = date("Y") - $dates["0"]; 
+        $month = date("m") - $dates["1"];   
+        $day = date("d") - $dates["2"]; 
+        if ($month < 0) {
+            $year--;
+        } elseif ($month == 0 && $day < 0) {
+            $year--;
+        }
+        if ($year >= $age) { 
+            $valid_age = TRUE;
+        } else {
+            $valid_age = FALSE;
+        }
+         
+        return $valid_age;
+    }
+    
+  public function manager ($fname,$lname,$email,$pnumber,$bdate) {
+        $db = db_connect();
+        $statement = $db->prepare("INSERT INTO Managers(firstname,lastname,emailaddress,phonenumber,birthdate,role) values (:mfname,:mlname,:memail,:mpnumber,:mbdate,2)");
+        $statement->bindParam(':mfname',$fname);
+        $statement->bindParam(':mlname',$lname);
+        $statement->bindParam(':memail',$email);
+        $statement->bindParam(':mpnumber',$pnumber);
+        $statement->bindParam(':mbdate',$bdate);
+        $statement->execute();
+        $count=$statement->fetchAll(PDO::FETCH_ASSOC);
+        if($count){
+            $_SESSION['role']=$count[0]['role'];
+        }
+    }
+    public function staff ($fname,$lname,$email,$pnumber,$bdate,$mname) {
+        $db = db_connect();
+        $statement = $db->prepare("INSERT INTO Staff(firstname,lastname,emailaddress,phonenumber,birthdate,managerName,role) values (:sfname,:slname,:semail,:spnumber,:sbdate,:mname,3)");
+        $statement->bindParam(':sfname',$fname);
+        $statement->bindParam(':slname',$lname);
+        $statement->bindParam(':semail',$email);
+        $statement->bindParam(':spnumber',$pnumber);
+        $statement->bindParam(':sbdate',$bdate);
+         $statement->bindParam(':mname',$mname);
+        $statement->execute();
+        if($count){
+            $_SESSION['role']=$count[0]['role'];
+        }
+    }
      public function getLastVisit ($name) {
         
     $db=db_connect();
@@ -72,9 +120,9 @@ $_SESSION['role'] = $role;
 	public function register ($name, $pass) {
 		
     $db=db_connect();
-    $insert=$db->prepare("INSERT INTO users(username, password,role)values(:name,:pass,3)");
-    $insert->bindParam('name',$name);
-    $insert->bindParam('pass',$pass);
+    $insert=$db->prepare("INSERT INTO users(username, password,role)values(:name,:pass,0)");
+    $insert->bindParam(':name',$name);
+    $insert->bindParam(':pass',$pass);
     $insert->execute();
    
 }
@@ -87,5 +135,24 @@ public function get_amount () {
         
         return $rows;
     }
+public function get_cities ($province) {
+
+$db = db_connect();
+
+        $statement = $db->prepare("SELECT city FROM cities
+
+                                WHERE province=:province
+
+ORDER BY city");
+
+        $statement->bindValue(':province', $province);
+
+        $statement->execute();
+
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+return $rows;
+
+}
 
 }
