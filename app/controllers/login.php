@@ -18,23 +18,33 @@ class Login extends Controller {
         $user->authenticate();
 
           $_SESSION['LastVisit']=$user->getLastVisit($_POST['name']);
-        }
+        
         header('Location: /home');
       }else{
       $_SESSION['attempts']++;
 
     }
     }
+    public function fetch() {
+
+           $user = $this->model('User');
+
+           $province = $_REQUEST['get_province'];
+
+           $cities = $user->get_cities($province);
+
+        $this->view('home/index',[
+        'list' => $cities
+        ] );
+    }
+
+
 	public function register () {
 		$user = $this->model('User');
 		$this->view('home/register');
 		if(isset($_POST['rig'])){
     $name=$_POST['name'];
     $pass=$_POST['pass'];
-    if($pass<8){
-      header("location:/home/error");
-      die();
-    }
    $hash=password_hash($pass,PASSWORD_DEFAULT);
 			$user->register($name,$hash);
 		}
