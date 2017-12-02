@@ -5,7 +5,7 @@ class Home extends Controller {
     public function index($name = '') {		
         $user = $this->model('User');
 		
-		$message='-welcome '.$_SESSION['name'].'<br>'.'-Today is ' . date("Y/m/d").'<br>'.'-role is '.$_SESSION['role'];
+		$message='-welcome '.$_SESSION['name'].'<br>'.'-Today is ' . date("Y/m/d");
 		
         $this->view('home/index', ['message' => $message]);
     }
@@ -30,6 +30,20 @@ class Home extends Controller {
         
         $this->view('profile/index', ['message' => $message]);
     }
+     public function staffvalidateage($name = '') {     
+        //$user = $this->model('User');
+        
+        $message='MUST BE OVER 18';
+        
+        $this->view('users/staff', ['message' => $message]);
+    }
+     public function managervalidateage($name = '') {     
+        //$user = $this->model('User');
+        
+        $message=' MUST BE OVER 18';
+        
+        $this->view('users/manager', ['message' => $message]);
+    }
     public function addedsuccessfully($name = '') {     
         //$user = $this->model('User');
         
@@ -37,12 +51,33 @@ class Home extends Controller {
         
         $this->view('profile/index', ['successfully' => $message]);
     }
+     public function manageraddedsuccessfully($name = '') {     
+        //$user = $this->model('User');
+        
+        $message=' Add successfully';
+        
+        $this->view('users/manager', ['successfully' => $message]);
+    }
+     public function staffaddedsuccessfully($name = '') {     
+        //$user = $this->model('User');
+        
+        $message=' Add successfully';
+        
+        $this->view('users/staff', ['successfully' => $message]);
+    }
     public function profileupdate($name = '') {     
         //$user = $this->model('User');
         
         $message='YOUR PROFILE NEEDE SOME UPDATES';
         
         $this->view('remind/index', ['message' => $message]);
+    }
+    public function managername($name = '') {     
+        //$user = $this->model('User');
+        
+        $message=' MANAGER NAME SHOULD BE PROVIDED';
+        
+        $this->view('users/staff', ['message' => $message]);
     }
     public function admin($name = '') {     
         $user = $this->model('User');
