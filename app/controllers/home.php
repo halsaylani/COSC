@@ -30,6 +30,20 @@ class Home extends Controller {
         
         $this->view('profile/index', ['message' => $message]);
     }
+     public function clientvalidateage($name = '') {     
+        //$user = $this->model('User');
+        
+        $message='YOU MUST BE OVER 18';
+        
+        $this->view('home/newuser', ['message' => $message]);
+    }
+    public function clientvalidatenumber($name = '') {     
+        //$user = $this->model('User');
+        
+        $message='PHONE NUMBER SHOULD BE 10 DIGITS';
+        
+        $this->view('home/newuser', ['message' => $message]);
+    }
      public function staffvalidateage($name = '') {     
         //$user = $this->model('User');
         
@@ -64,6 +78,13 @@ class Home extends Controller {
         $message=' Add successfully';
         
         $this->view('users/staff', ['successfully' => $message]);
+    }
+    public function clientaddedsuccessfully($name = '') {     
+        //$user = $this->model('User');
+        
+        $message=' client Add successfully';
+        
+        $this->view('home/newuser', ['successfully' => $message]);
     }
     public function profileupdate($name = '') {     
         //$user = $this->model('User');
