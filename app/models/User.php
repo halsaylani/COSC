@@ -100,6 +100,21 @@ public function validate_age($bdate, $age) {
             $_SESSION['role']=$count[0]['role'];
         }
     }
+    public function clients ($cname, $cemail,$cpnumber,$cbdate) {
+        
+    $db=db_connect();
+    $insert=$db->prepare("INSERT INTO clients(
+        clientsname, phonenumber,birthdate,emailaddress,byrole,byusername)values(:cname,:cpnumber,:cbdate,:cemail,:role,:name)");
+        $insert->bindParam(':name',$_SESSION['name']);
+        $insert->bindParam(':role',$_SESSION['role']);
+        $insert->bindParam(':cname',$cname);
+        $insert->bindParam(':cemail',$cemail);
+        $insert->bindParam(':cpnumber',$cpnumber);
+        $insert->bindParam(':cbdate',$cbdate);
+        $insert->execute();
+   
+}
+
      public function getLastVisit ($name) {
         
     $db=db_connect();
