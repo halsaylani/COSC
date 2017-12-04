@@ -1,5 +1,5 @@
 <?php require_once '../app/views/templates/header.php'?>
-<h2>staff list</h2>
+<h2>client list</h2>
 <table class='table table-striped table-condensed'>
 	<tr>
         <th>client name</th>
