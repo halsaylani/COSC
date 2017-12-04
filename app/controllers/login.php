@@ -27,27 +27,14 @@ class Login extends Controller {
     }
     public function fetch() {
 
-           $user = $this->model('User');
+$user = $this->model('User');
 
-           $province = $_REQUEST['get_province'];
+$province = $_REQUEST['get_province'];
 
-           $cities = $user->get_cities($province);
+$cities = $user->get_cities($province);
+$this->view('home/newuser',['list'=>$cities]);
 
-        $this->view('home/index',[
-        'list' => $cities
-        ] );
     }
-//     public function clientsinfo() {
-//         $user = $this->model('User');
-//         $this->view('home/newuser');
-//            if(isset($_POST['add'])){
-            
-//           $user->clients($_POST['cname'],$_POST['cemail'],$_POST['cpnumber'],$_POST['cbdate']);
-//            header('location: /home/clientaddedsuccessfully');
-          
-//          }
-  
-// }
 
 	public function register () {
 		$user = $this->model('User');
@@ -56,7 +43,13 @@ class Login extends Controller {
     $name=$_POST['name'];
     $pass=$_POST['pass'];
    $hash=password_hash($pass,PASSWORD_DEFAULT);
-			$user->register($name,$hash);
+
+			if($user->register($name,$hash)){
+        $this->view('home/index');
+      }else{
+        header('/home/userexists');
+      }
+    
 		}
 	}
 }
