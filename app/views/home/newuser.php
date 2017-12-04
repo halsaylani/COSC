@@ -33,6 +33,8 @@
       <div class="col-lg-3">
       <input class="form-control" placeholder="Birth Date" type="date" name="cbdate" >
        <div class="form-group">
+        <textarea rows="4" cols="50" name="comments">comments...
+</textarea>
   </fieldset>
   <button type="submit" name = "add" class="btn btn-primary" >add</button>
 </form>
