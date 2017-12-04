@@ -6,7 +6,7 @@
   <?php if(isset($data['message'])){ ?>
     <div class="alert alert-dismissible alert-danger"><?=$data['message']?></div>
   <?php } ?>
-  
+  <script src="/js/emailvalidation.js"></script>
 <form method="post" action="clientsinfo/index" >
 <fieldset>
     <h1> Enter client informations</h1>
@@ -21,7 +21,7 @@
       <label for="emailaddress">Email Address</label>
       <div class="col-lg-3">
 
-      <input  class="form-control" placeholder="Email Address" type="text" name="cemail" id="txtEmail" ><button type="submit" name = "add" class="btn btn-primary" onclick="ValidateEmail()">Check your email first</button>
+      <input  class="form-control" placeholder="Email Address" type="text" name="cemail" id="txtEmail" onchange="ValidateEmail(this.value);"> 
       </div>
     <div class="form-group">
       <label for="phonenumber">Phone Number</label>
@@ -36,23 +36,5 @@
   </fieldset>
   <button type="submit" name = "add" class="btn btn-primary" >add</button>
 </form>
-
-  <script>
-        function IsValidEmail(email) {
-             return /^\"?[\w-_\.]*\"?@algomau\.ca$/.test(email);
-        };
-        function ValidateEmail() {
-            var email = document.getElementById("txtEmail").value;
-            if (!IsValidEmail(email)) {
-                alert("Invalid email address form will be @algomau.ca");
-
-            }
-            else {
-                alert("Valid email address.");
-            }
-        }
-
-    </script>
-
-
     <?php require_once '../app/views/templates/footer.php' ?>
+    
