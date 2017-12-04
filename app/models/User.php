@@ -17,17 +17,19 @@ class User {
          */
          $db=db_connect();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query="SELECT username,password,role FROM users WHERE username=:name and password=:pass;";
+        $query="SELECT username,password,role FROM users WHERE username=:name;";
         $statement=$db->prepare($query);
         $statement->bindValue(':name', $this->username);
-        $statement->bindValue(':pass', $this->password);
+       
         $statement->execute();
         $count=$statement->fetchAll(PDO::FETCH_ASSOC);
         if($count){
             //$this->auth=true;
+            if (password_verify($this->password, $count[0]['password'])){
             $_SESSION['name']=$this->username;
             $_SESSION['role']=$count[0]['role'];
             $_SESSION['auth'] = true;
+        }
 
         }
 
@@ -83,6 +85,7 @@ public function validate_age($bdate, $age) {
         $statement->execute();
         $count=$statement->fetchAll(PDO::FETCH_ASSOC);
         if($count){
+            $_SESSION['mname']=$count[0]['managerName'];
             $_SESSION['role']=$count[0]['role'];
         }
     }
@@ -100,21 +103,30 @@ public function validate_age($bdate, $age) {
             $_SESSION['role']=$count[0]['role'];
         }
     }
-    public function clients ($cname, $cemail,$cpnumber,$cbdate) {
+    public function clients ($cname, $cemail,$cpnumber,$cbdate,$comments) {
         
     $db=db_connect();
     $insert=$db->prepare("INSERT INTO clients(
-        clientsname, phonenumber,birthdate,emailaddress,byrole,byusername)values(:cname,:cpnumber,:cbdate,:cemail,:role,:name)");
+        clientsname, phonenumber,birthdate,emailaddress,byrole,byusername,comments)values(:cname,:cpnumber,:cbdate,:cemail,:role,:name,:comments)");
         $insert->bindParam(':name',$_SESSION['name']);
         $insert->bindParam(':role',$_SESSION['role']);
         $insert->bindParam(':cname',$cname);
         $insert->bindParam(':cemail',$cemail);
         $insert->bindParam(':cpnumber',$cpnumber);
         $insert->bindParam(':cbdate',$cbdate);
+        $insert->bindParam(':comments',$comments);
         $insert->execute();
     
    
 }
+public function staffreports () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM Staff where managerName=:mname");
+        $statement->bindParam(':mname',$_SESSION['name']);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 public function stafflist () {
         $db = db_connect();
         $statement = $db->prepare("SELECT * FROM Staff ");
@@ -191,17 +203,24 @@ public function stafflist () {
     $insert->bindParam(':ipaddress',$address);
     $insert->execute();
 }
-	public function register ($name, $pass) {
-		
-    $db=db_connect();
-
-    $insert=$db->prepare("INSERT INTO users(username, password,role)values(:name,:pass,0)");
-    $insert->bindParam(':name',$name);
-    $insert->bindParam(':pass',$pass);
-    $insert->execute();
-
-   
-}
+	
+public function register ($name, $pass) {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM users WHERE username=:name;");
+        $statement->bindValue(':name', $name);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if ($rows) {
+            return false;
+        }
+        else {
+            $statement = $db->prepare("INSERT INTO users (username, password,role)
+                     VALUES (:name,:pass,0); ");
+            $statement->bindParam(':name',$name);
+            $statement->bindParam(':pass',$pass);
+            $statement->execute();
+        }
+    }
 public function checkifexists ($name) {
         
     $db=db_connect();
