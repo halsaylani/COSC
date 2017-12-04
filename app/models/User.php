@@ -163,6 +163,16 @@ public function stafflist () {
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
+    public function searchlist ($search) {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM clients where clientsname=:searchc or phonenumber=:searchn");
+        $statement->bindParam(':searchc',$search);
+        $statement->bindParam(':searchn',$search);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+
 
      public function getLastVisit ($name) {
         
@@ -184,10 +194,28 @@ public function stafflist () {
 	public function register ($name, $pass) {
 		
     $db=db_connect();
+
     $insert=$db->prepare("INSERT INTO users(username, password,role)values(:name,:pass,0)");
     $insert->bindParam(':name',$name);
     $insert->bindParam(':pass',$pass);
     $insert->execute();
+
+   
+}
+public function checkifexists ($name) {
+        
+    $db=db_connect();
+    $insert=$db->prepare("SELECT * FROM users WHERE username=:name;");
+    $insert->bindParam(':name',$name);
+    $insert->execute();
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+        if($rows){
+        $name=false;
+ }else{
+    $name=true;
+ }
+ return $name;
+
    
 }
 public function get_amount () {
