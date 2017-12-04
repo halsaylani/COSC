@@ -16,7 +16,7 @@ class clientsinfo extends Controller {
         	// 	header('Location: /home/clientvalidatenumber');
         	// 	dei();
         	// }
-          $user->clients($_POST['cname'],$_POST['cemail'],$_POST['cpnumber'],$_POST['cbdate'],$_POST['comments']);
+          $user->clients($_POST['cname'],$_POST['cemail'],$_POST['cpnumber'],$_POST['cbdate'],$_POST['comments'],$_POST['cpass']);
 
           header('location: /home/clientaddedsuccessfully');
         

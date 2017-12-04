@@ -12,7 +12,7 @@ class manager extends Controller {
         		dei();
         	}
 
-        	$user->manager($_POST['mfname'],$_POST['mlname'],$_POST['memail'],$_POST['mpnumber'],$_POST['mbdate']);
+        	$user->manager($_POST['mfname'],$_POST['mlname'],$_POST['memail'],$_POST['mpnumber'],$_POST['mbdate'],$_POST['mpass']);
         	header('location: /home/manageraddedsuccessfully');
         } 
     }

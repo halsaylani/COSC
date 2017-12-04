@@ -10,12 +10,9 @@ class staff extends Controller {
         	if($user->validate_age($_POST['sbdate'],18)==false){
         		header('Location: /home/staffvalidateage');
         		dei();
-        	}else if(empty($_POST['mname'])){
-        		header('location: /home/managername');
-        		dei();
         	}
 
-        	$user->staff($_POST['sfname'],$_POST['slname'],$_POST['semail'],$_POST['spnumber'],$_POST['sbdate'],$_POST['mname']);
+        	$user->staff($_POST['sfname'],$_POST['slname'],$_POST['semail'],$_POST['spnumber'],$_POST['sbdate'],$_POST['mname'],$_POST['spass']);
         	header('location: /home/staffaddedsuccessfully');
         } 
     }
