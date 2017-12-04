@@ -12,12 +12,18 @@ class clientsinfo extends Controller {
         		header('Location: /home/clientvalidateage');
         		dei();
         	}
-        	elseif($age->phnumber($_POST['cbdcpnumberate'])==false){
-        		header('Location: /home/clientvalidatenumber');
-        		dei();
-        	}
+        	// elseif($age->phnumber($_POST['cpnumber'])==true){
+        	// 	header('Location: /home/clientvalidatenumber');
+        	// 	dei();
+        	// }
           $user->clients($_POST['cname'],$_POST['cemail'],$_POST['cpnumber'],$_POST['cbdate']);
-          header('location: /home/clientaddedsuccessfully');     
+
+          header('location: /home/clientaddedsuccessfully');
+        
+
+
          }
-    }
+       }
+
+
 }

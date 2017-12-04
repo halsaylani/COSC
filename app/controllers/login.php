@@ -37,7 +37,17 @@ class Login extends Controller {
         'list' => $cities
         ] );
     }
-
+//     public function clientsinfo() {
+//         $user = $this->model('User');
+//         $this->view('home/newuser');
+//            if(isset($_POST['add'])){
+            
+//           $user->clients($_POST['cname'],$_POST['cemail'],$_POST['cpnumber'],$_POST['cbdate']);
+//            header('location: /home/clientaddedsuccessfully');
+          
+//          }
+  
+// }
 
 	public function register () {
 		$user = $this->model('User');

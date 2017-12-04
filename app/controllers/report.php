@@ -6,14 +6,14 @@ class Report extends Controller {
 		 $this->view('report/index');    
     }
     public function mostreminders($id='') {
-		 $v = $this->model('Reports');
+		 $v = $this->model('Reminders');
         $list = $v->get_reports();
         $this->view('report/mostreminders',[
         'list' => $list
         ] );   
     }
     public function remindersdates($id='') {
-        $v = $this->model('Reports');
+        $v = $this->model('Reminders');
         
         if(isset($_POST['find'])){
             $year1=$_POST['year1'];
@@ -28,7 +28,7 @@ class Report extends Controller {
         }
     }
     public function totallogins() {
-        $v = $this->model('Reports');
+        $v = $this->model('Reminders');
         $list=$v->totallogins();
         $this->view('report/totallogins',[
         'list' => $list
