@@ -8,7 +8,7 @@ if (isset($_SESSION['auth']) == 1) {
 
 <!DOCTYPE html>
 <html lang="en">
-    <link href= "/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href= "/css/style.css" rel="stylesheet" type="text/css"/>
     <title>COSC 4806</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">

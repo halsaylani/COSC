@@ -1,7 +1,7 @@
 
 <div class="footer">
-	 <p>Copyright &copy; <?php echo date('Y'); ?> </p>
-	 <p>LastVisit: <?=$data['message2']?> </p>
+	 <p>Copyright &copy; <?php echo date('Y'); ?> 
+	 <p>LastVisit: <?=$_SESSION['LastVisit']?> </p>
   <h1 class="display-3">Find Us</h1>
   <p>welcome to the website - for any further questions - Please email us exampl@hotmail.com.</p>
   
