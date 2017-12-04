@@ -63,10 +63,10 @@ if (isset($_SESSION['auth']) != 1) {
       <li class="nav-item">
         <a class="nav-link" href="/logout/index">Logout</a>
       </li>
-                     </ul>
-      <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" placeholder="Search" type="text">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+   </ul>
+      <form class="form-inline my-2 my-lg-0" action="/search/index" method="post">
+      <input class="form-control mr-sm-2" placeholder="Search" name="Search" type="text">
+      <button class="btn btn-secondary my-2 my-sm-0" name="search" type="submit">Search</button>
     </form>
   </div>
 
