@@ -1,4 +1,4 @@
-<?php
+
 function fetch_city(val)
 
 {
@@ -7,7 +7,7 @@ function fetch_city(val)
 
         type: 'post',
 
-        url: '/login/fetch',
+        url: '/clientsinfo/fetch',
 
         data: {
 

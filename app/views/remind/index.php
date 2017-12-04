@@ -1,6 +1,11 @@
 
 <?php require_once '../app/views/templates/header.php'?>
 <h2>Your Reminders</h2>
+
+<?php if(isset($data['message'])){?>
+<div class="alert alert-dismissible alert-danger"><?=$data['message']?></div>
+
+<?php } ?>
 <table class='table table-striped table-condensed'>
 	<tr>
 		<th>Subject</th>
