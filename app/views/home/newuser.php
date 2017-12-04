@@ -7,6 +7,7 @@
     <div class="alert alert-dismissible alert-danger"><?=$data['message']?></div>
   <?php } ?>
   <script src="/js/emailvalidation.js"></script>
+  <script src="/js/phonevalidation.js"></script>
 <form method="post" action="clientsinfo/index" >
 <fieldset>
     <h1> Enter client informations</h1>
@@ -20,13 +21,17 @@
      <div class="form-group">
       <label for="emailaddress">Email Address</label>
       <div class="col-lg-3">
-
       <input  class="form-control" placeholder="Email Address" type="text" name="cemail" id="txtEmail" onchange="ValidateEmail(this.value);"> 
       </div>
+      <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <div class="col-lg-3">
+      <input class="form-control" placeholder="Password" type="text" name="cpass" required>
+    </div>
     <div class="form-group">
       <label for="phonenumber">Phone Number</label>
       <div class="col-lg-3">
-      <input class="form-control" placeholder="Phone Number" type="tel" name="cpnumber" >
+      <input class="form-control" id="phone" onchange="ValidatePhone(this.value);" placeholder="Phone Number" type="tel" name="cpnumber" >
     </div>
     <div class="form-group">
       <label for="birthdate">Birth Date</label>
