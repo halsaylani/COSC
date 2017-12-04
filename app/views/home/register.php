@@ -1,4 +1,7 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
+<?php if(isset($data['message'])){ ?>
+    <div class="alert alert-dismissible alert-danger"><?=$data['message']?></div>
+  <?php } ?>
 <html>
 <body>
     <form method="post" action="/login/register">
