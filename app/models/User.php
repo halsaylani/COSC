@@ -112,8 +112,57 @@ public function validate_age($bdate, $age) {
         $insert->bindParam(':cpnumber',$cpnumber);
         $insert->bindParam(':cbdate',$cbdate);
         $insert->execute();
+    
    
 }
+public function stafflist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM Staff ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function managerlist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM Managers ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+     public function clientslist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM clients ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function staffphonelist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT firstname,phonenumber FROM Staff ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function managerphonelist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT firstname,phonenumber FROM Managers ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function clientsphonelist () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT clientsname,phonenumber FROM clients ");
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 
      public function getLastVisit ($name) {
         

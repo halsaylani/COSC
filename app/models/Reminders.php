@@ -41,7 +41,7 @@ $profile=false;
    return $profile;
 }
 public function phnumber($tel) {
-if (preg_match('/(0[0-9]{9})/', $tel))
+if (preg_match('^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$', $tel))
 
 {
 
