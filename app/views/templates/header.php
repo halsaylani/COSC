@@ -50,6 +50,13 @@ if (isset($_SESSION['auth']) != 1) {
       <li class="nav-item">
         <a class="nav-link" href="/clientslist/index">Clints List</a>
       </li>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/staff/index">Add staff</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/staffreports/index">Staff reports</a>
+      </li>
        <?php } ?>
        <li class="nav-item">
         <a class="nav-link" href="/profile/index">Custom reports</a>
