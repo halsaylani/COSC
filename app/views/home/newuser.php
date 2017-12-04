@@ -9,7 +9,7 @@
   
 <form method="post" action="clientsinfo/index" >
 <fieldset>
-    <h1> Enter user informations</h1>
+    <h1> Enter client informations</h1>
     <h2>your role is: <?=$_SESSION['role']?></h2>
     <div class="form-group">
       <label for="exampleUsername">Client's Name</label>
@@ -20,7 +20,8 @@
      <div class="form-group">
       <label for="emailaddress">Email Address</label>
       <div class="col-lg-3">
-      <input class="form-control" placeholder="Email Address" type="text" name="cemail" id="txtEmail">
+
+      <input  class="form-control" placeholder="Email Address" type="text" name="cemail" id="txtEmail" ><button type="submit" name = "add" class="btn btn-primary" onclick="ValidateEmail()">Check your email first</button>
       </div>
     <div class="form-group">
       <label for="phonenumber">Phone Number</label>
@@ -38,13 +39,12 @@
 
   <script>
         function IsValidEmail(email) {
-            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-            return expr.test(email);
+             return /^\"?[\w-_\.]*\"?@algomau\.ca$/.test(email);
         };
         function ValidateEmail() {
             var email = document.getElementById("txtEmail").value;
             if (!IsValidEmail(email)) {
-                alert("Invalid email address.");
+                alert("Invalid email address form will be @algomau.ca");
 
             }
             else {
