@@ -7,6 +7,7 @@
       <?php if(isset($data['successfully'])){?>
      <div class="alert alert-dismissible alert-success"><?=$data['successfully']?></div>
       <?php } ?>
+       <script src="/js/emailvalidation.js"></script>
   <form method="post" action="staff/index">
   <fieldset>
     <h1> New staff</h1>
@@ -24,7 +25,12 @@
      <div class="form-group">
       <label for="exampleInputPassword1">Email Address:</label>
       <div class="col-lg-3">
-      <input class="form-control" placeholder="Email Address" type="text" name="semail" required>
+      <input class="form-control" placeholder="Email Address" onchange="ValidateEmail(this.value);" id="txtEmail" type="text" name="semail" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <div class="col-lg-3">
+      <input class="form-control" placeholder="Password" type="text" name="spass" required>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Phone Number:</label>
