@@ -107,6 +107,13 @@ class Home extends Controller {
         
         $this->view('home/admin', ['message' => $message]);
     }
+    public function userexists($name = '') {     
+        $user = $this->model('User');
+        
+        $message='user exists already';
+        
+        $this->view('home/register', ['message' => $message]);
+    }
 
      public function LasiVisit($name = '') { 
         $user = $this->model('User');
