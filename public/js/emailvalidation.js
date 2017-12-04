@@ -5,9 +5,6 @@ function IsValidEmail(email) {
             var email = document.getElementById("txtEmail").value;
             if (!IsValidEmail(email)) {
                 alert("Invalid email address form will be @algomau.ca");
-
             }
-            else {
-                alert("Valid email address.");
-            }
+            
         }
