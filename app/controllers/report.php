@@ -35,4 +35,13 @@ class Report extends Controller {
         ] );
    
     }
+     public function reportAll() {
+        $v = $this->model('User');
+        $list=$v->reportAll();
+        $this->view('report/reportAll',[
+        'list' => $list
+        ] );
+   
+    }
+
 }
