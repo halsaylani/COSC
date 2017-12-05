@@ -5,4 +5,5 @@
 <a href="/report/mostreminders"><button type="button" class="btn btn-outline-secondary">Most Reminders</button></a> 
 <a href="/report/remindersdates"><button type="button" class="btn btn-outline-secondary">Reminders Dates</button></a> 
 <a href="/report/totallogins"><button type="button" class="btn btn-outline-secondary">Total Logins</button></a> 
+<a href="/report/reportAll"><button type="button" class="btn btn-outline-secondary">Reports of all</button></a>
 <?php require_once '../app/views/templates/footer.php' ?>

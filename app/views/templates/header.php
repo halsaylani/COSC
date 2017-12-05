@@ -59,7 +59,7 @@ if (isset($_SESSION['auth']) != 1) {
       </li>
        <?php } ?>
        <li class="nav-item">
-        <a class="nav-link" href="/profile/index">Custom reports</a>
+        <a class="nav-link" href="/customreports/index">Custom reports</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/phonelist/index">phone list</a>
