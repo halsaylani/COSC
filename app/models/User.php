@@ -25,11 +25,11 @@ class User {
         $count=$statement->fetchAll(PDO::FETCH_ASSOC);
         if($count){
             //$this->auth=true;
-          //  if (password_verify($this->password, $count[0]['password'])){
+            if (password_verify($this->password, $count[0]['password'])){
             $_SESSION['name']=$this->username;
             $_SESSION['role']=$count[0]['role'];
             $_SESSION['auth'] = true;
-        //}
+        }
 
         }
 
@@ -248,22 +248,15 @@ public function register ($name, $pass) {
             $statement->execute();
         }
     }
-public function checkifexists ($name) {
-        
-    $db=db_connect();
-    $insert=$db->prepare("SELECT * FROM users WHERE username=:name;");
-    $insert->bindParam(':name',$name);
-    $insert->execute();
-    $rows = $statement->fetch(PDO::FETCH_ASSOC);
-        if($rows){
-        $name=false;
- }else{
-    $name=true;
- }
- return $name;
+    public function reportAll() {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT users.username, personalDetails.firstname, personalDetails.lastname, personalDetails.emailaddress, personalDetails.birthdate, personalDetails.phonenumber, COUNT(notes.id) as count FROM users, personalDetails, notes ;");
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 
-   
-}
+
 public function get_amount () {
         $db = db_connect();
         $statement = $db->prepare("SELECT logtype FROM tuition WHERE username=:name;");
