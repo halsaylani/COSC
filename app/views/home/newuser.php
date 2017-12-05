@@ -33,6 +33,23 @@
       <div class="col-lg-3">
       <input class="form-control" id="phone" onchange="ValidatePhone(this.value);" placeholder="Phone Number" type="tel" name="cpnumber" >
     </div>
+    div class="col-lg-2">
+
+                        <select class="form-control" id="province" name="province" onchange="fetch_city(this.value);">
+
+<option>Select Province</option>
+
+<option value="Ontario">Ontario</option>
+
+<option value="NS">Nova Scotia</option>
+
+<option value="Alberta">Alberta</option>                        
+
+</select>
+
+                    </div>
+
+                </div>
     <div class="form-group">
       <label for="birthdate">Birth Date</label>
       <div class="col-lg-3">
