@@ -266,7 +266,21 @@ public function get_amount () {
         
         return $rows;
     }
-public function get_cities ($province) {
+    public function allnames () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM clients");
+        $statement->execute();
+        $rows = $statement->fetch(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function allages () {
+        $db = db_connect();
+        $statement = $db->prepare("SELECT * FROM personalDetails");
+        $statement->execute();
+        $rows = $statement->fetch(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function get_cities ($province) {
 
 $db = db_connect();
 
