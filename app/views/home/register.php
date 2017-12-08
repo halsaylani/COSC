@@ -20,7 +20,6 @@
     </div>
   </div>
     <button type="submit" name = "rig" class="btn btn-primary">Register</button>
-    <a href= "../app/views/login.php"> login</a>
   </fieldset>
 </form>
 </body>

@@ -1,10 +1,9 @@
 <?php require_once '../app/views/templates/headerPublic.php' ?>
 <html>
-
 <body>
 <form method="post" action="login/index">
   <fieldset>
-    <h1>welcome to the website</h1>
+    <h3>-welcome to the website</h3>
     <div class="form-group">
       <label for="exampleUsername">Username</label>
       <div class="col-lg-3">
@@ -18,7 +17,6 @@
     </div>
   </div>
     <button type="submit" name = "submit" class="btn btn-primary">Login</button>
-    <a href= "/login/register"> Create an account</a>
   </fieldset>
 </form>
 </body>
