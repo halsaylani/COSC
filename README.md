@@ -7,3 +7,4 @@
 #search and reports works perfect just some issue with custom reports
 #thanks
 #my GitHub link https://github.com/halsaylani/COSC
+#please ignore any new updates.(Personal purposes)
